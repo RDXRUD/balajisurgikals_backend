@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import connect, disconnect, get_db
 from auth import hash_password
 from config import settings
-from routers import auth, products, orders, customers, analytics, promotions, wishlist
+from routers import auth, products, orders, customers, analytics, promotions, wishlist, config
 
 
 @asynccontextmanager
@@ -64,6 +64,7 @@ app.include_router(customers.router)
 app.include_router(analytics.router)
 app.include_router(promotions.router)
 app.include_router(wishlist.router)
+app.include_router(config.router)
 
 
 @app.get("/health")
