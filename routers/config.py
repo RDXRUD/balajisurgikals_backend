@@ -15,7 +15,7 @@ async def get_share_config(_=Depends(require_admin)):
     doc = await db.config.find_one({"key": "share"})
     if not doc:
         return ShareConfig(
-            template="{{name}}\n\n💰 Price: ₹{{price}}\n📦 Category: {{category}}\n\n{{desc}}"
+            template="{{name}}\n\n{{desc}}"
         )
     return ShareConfig(template=doc["template"], customMessage=doc.get("customMessage", ""))
 
